@@ -27,7 +27,8 @@ class Vehicle:
 
     def get_description(self):
         print(
-            f'Vehicle type: {self.vehicle_type}. Max speed: {self.max_speed}. Mileage: {self.mileage}. Passenger capacity: {self.passenger_capacity}')
+            f'Vehicle type: {self.vehicle_type}. Max speed: {self.max_speed}. Mileage: {self.mileage}. Passenger '
+            f'capacity: {self.passenger_capacity}')
 
     def get_rent_price(self):
         return pow(self.passenger_capacity, 2)
@@ -44,8 +45,11 @@ class Bus(Vehicle):
         super().__init__(vehicle_type, max_speed, mileage, 50)
 
     def get_rent_price(self):
-        percent = 10
-        return self.passenger_capacity * (1 + (percent / 100))
+        factor = 10
+        if self.passenger_capacity > factor:
+            return super().get_rent_price() * (1 + (factor / 100))
+        else:
+            return super().get_rent_price()
 
 
 class Auto(Vehicle):
@@ -61,34 +65,47 @@ class Auto(Vehicle):
             f' Passenger capacity: {self.passenger_capacity}. Color: {self.color}')
 
 
+print('-------------------------Vehicle object--------------------------------------')
 vehicle = Vehicle('Moto', 250, 3000, 1)
-print(vehicle.get_rent_price())
+print('Moto rent price: ', vehicle.get_rent_price())
 vehicle.get_description()
 vehicle.drive(500)
 vehicle.get_description()
 
+print('-------------------------Auto object--------------------------------------')
+
 auto1 = Auto('Auto', 110, 2000, 2)
 auto2 = Auto('Auto', 230, 9300, 5)
 
-print(auto1.get_rent_price())
+print('-------------Auto1---------------')
+
+print('Auto1 rent price: ', auto1.get_rent_price())
 auto1.get_description()
 auto1.drive(999)
 auto1.get_description()
 
-print(auto2.get_rent_price())
+print('-------------Auto2---------------')
+
+print('Auto2 rent price: ', auto2.get_rent_price())
 auto2.get_description()
 auto2.drive(700)
 auto2.get_description()
 
+print('-------------------------Bus object--------------------------------------')
+
 bus1 = Bus('Bus', 60, 10000)
 bus2 = Bus('Bus', 90, 20000)
 
-print(bus1.get_rent_price())
+print('-------------Bus1---------------')
+
+print('Bus1 rent price: ', bus1.get_rent_price())
 bus1.get_description()
 bus1.drive(10000)
 bus1.get_description()
 
-print(bus2.get_rent_price())
+print('-------------Bus2---------------')
+
+print('Bus2 rent price: ', bus2.get_rent_price())
 bus2.get_description()
 bus2.drive(20)
 bus2.get_description()
