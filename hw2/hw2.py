@@ -7,7 +7,7 @@ def service_alert_decorator(drive_function):
             print('No service required!')
         else:
             quotient = res // limit_service_required_mileage
-            for _ in range(quotient):  # Loop 10 times
+            for _ in range(quotient):
                 print('Service required!')
 
     return _service_alert_decorator
