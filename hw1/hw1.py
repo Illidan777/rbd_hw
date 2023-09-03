@@ -12,12 +12,11 @@ print('Sum: ', float(number1) + float(number2))
 # temperature converting
 
 temperature_value = float(input('Enter temperature value: '))
-temperature_type = input('Enter temperature type(C/F): ')
+temperature_type = input('Enter temperature type(C/F): ').upper()
 
-match temperature_type.upper():
-    case 'F':
-        print('Your temperature was converted to Celsius. Value: ', (temperature_value - 32)/1.8)
-    case 'C':
-        print('Your temperature was converted to Fahrenheit. Value: ', temperature_value * 1.8 + 32)
-    case _:
-        print("Unsupported temperature type")
+if temperature_type == 'F':
+    print('Your temperature was converted to Celsius. Value:', (temperature_value - 32) / 1.8)
+elif temperature_type == 'C':
+    print('Your temperature was converted to Fahrenheit. Value:', temperature_value * 1.8 + 32)
+else:
+    print("Unsupported temperature type")
